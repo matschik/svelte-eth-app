@@ -1,40 +1,32 @@
-# create-svelte
+# svelte-eth-app
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte).
+Features:
+- Using **SvelteKit** with TypeScript for web app development
+- Using **Foundry** for Ethereum smart contract development (build, test, deploy)
+- Using **Ethers.js** to interact with smart contract via web app
 
-## Creating a project
 
-If you're seeing this, you've probably already done this step. Congrats!
 
-```bash
-# create a new project in the current directory
-npm init svelte@next
 
-# create a new project in my-app
-npm init svelte@next my-app
-```
+## Getting started
 
-> Note: the `@next` is temporary
+Requirements:
+- Node.js
+- Foundry (installation guide: https://onbjerg.github.io/foundry-book/getting-started/installation.html)
 
-## Developing
+```sh
+# Install web app dependencies
+npm install
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
-
-```bash
+# Start web app development server
 npm run dev
 
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
+# Build web app for production
+npm run dev
+
+# Compile smart contracts
+npm run contracts:build
+
+# Test smart contracts
+npm run contracts:test
 ```
-
-## Building
-
-To create a production version of your app:
-
-```bash
-npm run build
-```
-
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.

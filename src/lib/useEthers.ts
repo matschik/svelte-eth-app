@@ -1,7 +1,7 @@
 import { ethers } from 'ethers';
 import { get, writable } from 'svelte/store';
 
-declare var window: any
+declare const window: any;
 
 // A Signer is a class which (usually) in some way directly or indirectly has access to a private key,
 // which can sign messages and transactions to authorize the network to charge your account
@@ -13,23 +13,22 @@ const signer = writable<ethers.providers.JsonRpcSigner>();
 const provider = writable<ethers.providers.Web3Provider>();
 
 function fetchProvider() {
-	provider.set(new ethers.providers.Web3Provider(window.ethereum))
+	provider.set(new ethers.providers.Web3Provider(window.ethereum));
 }
 
 function getCurrentSigner() {
-	const currentProvider = get(provider)
+	const currentProvider = get(provider);
 
 	try {
 		const currentSigner = currentProvider.getSigner();
 		signer.set(currentSigner);
 	} catch (err) {
-		console.error({ err })
+		console.error({ err });
 	}
-
 }
 
 async function requestSigner() {
-	const currentProvider = get(provider)
+	const currentProvider = get(provider);
 	// MetaMask requires requesting permission to connect users accounts
 	await currentProvider.send('eth_requestAccounts', []);
 	const currentSigner = currentProvider.getSigner();
@@ -41,8 +40,8 @@ export default function useEthers() {
 		signer,
 		provider,
 		async onMount() {
-			fetchProvider()
-			await getCurrentSigner()
+			fetchProvider();
+			await getCurrentSigner();
 		},
 		requestSigner
 	};

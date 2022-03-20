@@ -7,7 +7,7 @@
 	const { signer, provider, requestSigner, onMount: ethersOnMount } = useEthers();
 
 	let signerBalance: ethers.BigNumberish;
-	let signerAddress: string = '';
+	let signerAddress = '';
 	$: signerEthBalance = signerBalance && ethers.utils.formatEther(signerBalance);
 
 	const HELLO_WORLD_CONTRACT_DEPLOYED_ADDRESS = '0xa39913BE7118E7B637d7A0491A1bF785980d721f';
